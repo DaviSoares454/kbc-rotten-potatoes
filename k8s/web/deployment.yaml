@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: movies
-          image: davisoares454/kbc-rotten-potatoes:v2
+          image: davisoares454/kbc-rotten-potatoes
           ports:
             - containerPort: 5000
           env:
@@ -42,4 +42,4 @@ spec:
     - port: 80
       targetPort: 5000
       nodePort: 30000
-  type: NodePort
+  type: LoadBalancer
