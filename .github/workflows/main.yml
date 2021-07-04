@@ -1,0 +1,31 @@
+name: ci-cd k8s-bootcamp
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Docker Login
+        uses: docker/login-action@v1.10.0
+        with:
+          username: ${{  secrets.DOCKERHUB_USERNAME  }}
+          PASSWORD: ${{  secrets.DOCKERHUB_PASSWORD  }}
+          
+      - name: Build and push Docker images
+        uses: docker/build-push-action@v2.6.1
+        with:
+          context: ./src
+          file: ./src/Dockerfile
+          push: true
+          tags: |
+            davisoares454/kbc-rotten-potatoes:${{  github.run_number  }}
+            davisoares454/kbc-rotten-potatoes:latest
+            
