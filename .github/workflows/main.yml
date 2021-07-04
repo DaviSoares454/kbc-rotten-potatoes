@@ -54,3 +54,4 @@ jobs:
         with:
           manifests: |
             k8s/web/deployment.yaml   
+          images: davisoares454/kbc-rotten-potatoes:${{ github.run_number }}
