@@ -2,9 +2,9 @@ name: ci-cd k8s-bootcamp
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   build-push:
